@@ -45,7 +45,7 @@ export function header() {
   name.appendChild(name2);
 
   const navigation = document.createElement("nav");
-  navigation.className = "lg:flex items-center gap-8";
+  navigation.className = "hidden lg:flex items-center gap-8";
   itens.appendChild(navigation);
 
   const buttonInicio = document.createElement("button");
@@ -96,7 +96,7 @@ export function header() {
   navigation.appendChild(buttonContato);
 
   const contacts = document.createElement("div");
-  contacts.className = "lg:flex items-center gap-3";
+  contacts.className = "hidden lg:flex items-center gap-3";
   itens.appendChild(contacts);
 
   const suport = document.createElement("button");
@@ -226,4 +226,172 @@ export function header() {
   const pecaWord = document.createElement("div");
   pecaWord.textContent = "Peça sua Maquininha";
   pecaMaquina.appendChild(pecaWord);
+
+  const botaoMenu = document.createElement("button");
+  botaoMenu.className = "lg:hidden p-2 text-foreground";
+
+  botaoMenu.type = "button";
+  botaoMenu.setAttribute("aria-label", "Abrir menu");
+
+  const svgMenu = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+  svgMenu.setAttribute("xmlns", "http://www.w3.org/2000/svg");
+  svgMenu.setAttribute("width", "24");
+  svgMenu.setAttribute("height", "24");
+  svgMenu.setAttribute("viewBox", "0 0 24 24");
+  svgMenu.setAttribute("fill", "none");
+  svgMenu.setAttribute("stroke", "currentColor");
+  svgMenu.setAttribute("stroke-width", "2");
+  svgMenu.setAttribute("stroke-linecap", "round");
+  svgMenu.setAttribute("stroke-linejoin", "round");
+  svgMenu.setAttribute("class", "lucide lucide-menu w-6 h-6");
+
+  const line1 = document.createElementNS("http://www.w3.org/2000/svg", "line");
+  line1.setAttribute("x1", "4");
+  line1.setAttribute("x2", "20");
+  line1.setAttribute("y1", "12");
+  line1.setAttribute("y2", "12");
+
+  const line2 = document.createElementNS("http://www.w3.org/2000/svg", "line");
+  line2.setAttribute("x1", "4");
+  line2.setAttribute("x2", "20");
+  line2.setAttribute("y1", "6");
+  line2.setAttribute("y2", "6");
+
+  const line3 = document.createElementNS("http://www.w3.org/2000/svg", "line");
+  line3.setAttribute("x1", "4");
+  line3.setAttribute("x2", "20");
+  line3.setAttribute("y1", "18");
+  line3.setAttribute("y2", "18");
+
+  svgMenu.append(line1, line2, line3);
+  botaoMenu.appendChild(svgMenu);
+  itens.appendChild(botaoMenu);
+
+  const menuMobile = document.createElement("div");
+  menuMobile.id = "menuMobile";
+  menuMobile.className =
+    "hidden lg:hidden py-4 border-t border-border/50 animate-fade-in";
+  container.appendChild(menuMobile);
+
+  const nav = document.createElement("nav");
+  nav.className = "flex flex-col gap-2";
+  menuMobile.appendChild(nav);
+
+  function criarBotaoMenu(texto) {
+    const btn = document.createElement("button");
+    btn.textContent = texto;
+    btn.className =
+      "text-foreground/80 hover:text-primary font-medium py-3 px-4 text-left hover:bg-accent rounded-lg transition-colors";
+    return btn;
+  }
+
+  nav.appendChild(criarBotaoMenu("Início"));
+  nav.appendChild(criarBotaoMenu("Soluções"));
+  nav.appendChild(criarBotaoMenu("Vantagens"));
+  nav.appendChild(criarBotaoMenu("Sobre Nós"));
+  nav.appendChild(criarBotaoMenu("Contato"));
+
+  const acoes = document.createElement("div");
+  acoes.className = "flex flex-col gap-2 mt-4 pt-4 border-t border-border/50";
+  nav.appendChild(acoes);
+
+  const btnSuporte = document.createElement("button");
+  btnSuporte.className =
+    "inline-flex items-center whitespace-nowrap rounded-lg text-sm font-semibold transition-all duration-300 hover:bg-accent hover:text-accent-foreground h-11 px-6 py-2 justify-start gap-2";
+
+  const svgPhone = document.createElementNS(
+    "http://www.w3.org/2000/svg",
+    "svg",
+  );
+  svgPhone.setAttribute("viewBox", "0 0 24 24");
+  svgPhone.setAttribute("fill", "none");
+  svgPhone.setAttribute("stroke", "currentColor");
+  svgPhone.setAttribute("stroke-width", "2");
+  svgPhone.setAttribute("stroke-linecap", "round");
+  svgPhone.setAttribute("stroke-linejoin", "round");
+  svgPhone.setAttribute("class", "lucide lucide-phone w-4 h-4");
+
+  const phonePath = document.createElementNS(
+    "http://www.w3.org/2000/svg",
+    "path",
+  );
+  phonePath.setAttribute(
+    "d",
+    "M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z",
+  );
+
+  svgPhone.appendChild(phonePath);
+  btnSuporte.append(svgPhone, "Suporte 24h");
+  acoes.appendChild(btnSuporte);
+
+  const btnPortal = document.createElement("button");
+  btnPortal.className =
+    "inline-flex items-center whitespace-nowrap rounded-lg text-sm font-semibold transition-all duration-300 border-2 border-primary bg-transparent text-primary hover:bg-primary hover:text-primary-foreground h-11 px-6 py-2 justify-start gap-2";
+
+  const iconUser = document.createElementNS(
+    "http://www.w3.org/2000/svg",
+    "svg",
+  );
+  iconUser.setAttribute("viewBox", "0 0 24 24");
+  iconUser.setAttribute("fill", "none");
+  iconUser.setAttribute("stroke", "currentColor");
+  iconUser.setAttribute("stroke-width", "2");
+  iconUser.setAttribute("stroke-linecap", "round");
+  iconUser.setAttribute("stroke-linejoin", "round");
+  iconUser.setAttribute("class", "lucide lucide-user w-4 h-4");
+
+  const userPath = document.createElementNS(
+    "http://www.w3.org/2000/svg",
+    "path",
+  );
+  userPath.setAttribute("d", "M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2");
+
+  const userCircle = document.createElementNS(
+    "http://www.w3.org/2000/svg",
+    "circle",
+  );
+  userCircle.setAttribute("cx", "12");
+  userCircle.setAttribute("cy", "7");
+  userCircle.setAttribute("r", "4");
+
+  iconUser.append(userPath, userCircle);
+  btnPortal.append(iconUser, "Portal do Cliente");
+  acoes.appendChild(btnPortal);
+
+  const btnMaquininha = document.createElement("button");
+  btnMaquininha.className =
+    "inline-flex items-center whitespace-nowrap rounded-lg text-sm font-semibold transition-all duration-300 bg-primary text-primary-foreground shadow-soft hover:shadow-medium hover:brightness-110 active:scale-[0.98] h-11 px-6 py-2 justify-start gap-2";
+
+  const iconCard = document.createElementNS(
+    "http://www.w3.org/2000/svg",
+    "svg",
+  );
+  iconCard.setAttribute("viewBox", "0 0 24 24");
+  iconCard.setAttribute("fill", "none");
+  iconCard.setAttribute("stroke", "currentColor");
+  iconCard.setAttribute("stroke-width", "2");
+  iconCard.setAttribute("stroke-linecap", "round");
+  iconCard.setAttribute("stroke-linejoin", "round");
+  iconCard.setAttribute("class", "lucide lucide-credit-card w-4 h-4");
+
+  const rect2 = document.createElementNS("http://www.w3.org/2000/svg", "rect");
+  rect2.setAttribute("x", "2");
+  rect2.setAttribute("y", "5");
+  rect2.setAttribute("width", "20");
+  rect2.setAttribute("height", "14");
+  rect2.setAttribute("rx", "2");
+
+  const lines = document.createElementNS("http://www.w3.org/2000/svg", "line");
+  lines.setAttribute("x1", "2");
+  lines.setAttribute("x2", "22");
+  lines.setAttribute("y1", "10");
+  lines.setAttribute("y2", "10");
+
+  iconCard.append(rect2, lines);
+  btnMaquininha.append(iconCard, "Peça sua Maquininha");
+  acoes.appendChild(btnMaquininha);
+
+  botaoMenu.addEventListener("click", () => {
+    menuMobile.classList.toggle("hidden");
+  });
 }
