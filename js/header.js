@@ -277,27 +277,59 @@ export function header() {
   nav.className = "flex flex-col gap-2";
   menuMobile.appendChild(nav);
 
-  function criarBotaoMenu(texto) {
+  function criarBotaoMenu(texto, chave) {
     const btn = document.createElement("button");
     btn.textContent = texto;
+
+    // NÃO use o mesmo id da seção:
+    // btn.id = chave;
+    btn.id = `menu-${chave}`;
+
     btn.className =
       "text-foreground/80 hover:text-primary font-medium py-3 px-4 text-left hover:bg-accent rounded-lg transition-colors";
+
+    const mapaSecoes = {
+      inicio: "inicio",
+      solucoes: "solucoes",
+      vantagens: "vantagens",
+      sobre: "sobre",
+      contato: "contato",
+    };
+
+    btn.addEventListener("click", () => {
+      const idSecao = mapaSecoes[chave];
+      const secao = document.getElementById(idSecao);
+
+      if (secao) secao.scrollIntoView({ behavior: "smooth" });
+
+      menuMobile?.classList.add("hidden");
+    });
+
     return btn;
   }
 
-  nav.appendChild(criarBotaoMenu("Início"));
-  nav.appendChild(criarBotaoMenu("Soluções"));
-  nav.appendChild(criarBotaoMenu("Vantagens"));
-  nav.appendChild(criarBotaoMenu("Sobre Nós"));
-  nav.appendChild(criarBotaoMenu("Contato"));
+  nav.appendChild(criarBotaoMenu("Início", "inicio"));
+  nav.appendChild(criarBotaoMenu("Soluções", "solucoes"));
+  nav.appendChild(criarBotaoMenu("Vantagens", "vantagens"));
+  nav.appendChild(criarBotaoMenu("Sobre Nós", "sobre"));
+  nav.appendChild(criarBotaoMenu("Contato", "contato"));
 
   const acoes = document.createElement("div");
   acoes.className = "flex flex-col gap-2 mt-4 pt-4 border-t border-border/50";
   nav.appendChild(acoes);
 
   const btnSuporte = document.createElement("button");
+  btnSuporte.id = "btnSuporte";
   btnSuporte.className =
     "inline-flex items-center whitespace-nowrap rounded-lg text-sm font-semibold transition-all duration-300 hover:bg-accent hover:text-accent-foreground h-11 px-6 py-2 justify-start gap-2";
+  btnSuporte.addEventListener("click", () => {
+    const phone = "5561993131267";
+    const message = encodeURIComponent("Olá! Preciso de ajuda.");
+    const url = `https://api.whatsapp.com/send?phone=${phone}&text=${message}`;
+    btnSuporte?.classList.add("hidden");
+
+    window.open(url, "_blank");
+  });
 
   const svgPhone = document.createElementNS(
     "http://www.w3.org/2000/svg",
@@ -361,6 +393,12 @@ export function header() {
   const btnMaquininha = document.createElement("button");
   btnMaquininha.className =
     "inline-flex items-center whitespace-nowrap rounded-lg text-sm font-semibold transition-all duration-300 bg-primary text-primary-foreground shadow-soft hover:shadow-medium hover:brightness-110 active:scale-[0.98] h-11 px-6 py-2 justify-start gap-2";
+  btnMaquininha.addEventListener("click", () => {
+    document
+      .getElementById("maquininha")
+      ?.scrollIntoView({ behavior: "smooth" });
+    menuMobile?.classList.add("hidden");
+  });
 
   const iconCard = document.createElementNS(
     "http://www.w3.org/2000/svg",
