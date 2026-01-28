@@ -6,23 +6,26 @@ export function inicio() {
 
   const background = document.createElement("section");
   background.id = "inicio";
-  background.className =
-    "relative min-h-screen flex items-center overflow-hidden";
+  background.className = "relative min-h-screen flex items-center";
   main.appendChild(background);
+
+  const bgWrap = document.createElement("div");
+  bgWrap.className = "absolute inset-0 overflow-hidden";
+  background.appendChild(bgWrap);
 
   const backgroundColor = document.createElement("div");
   backgroundColor.className = "absolute inset-0 gradient-orange opacity-95";
-  background.appendChild(backgroundColor);
+  bgWrap.appendChild(backgroundColor);
 
   const detail = document.createElement("div");
   detail.className =
     "absolute top-20 right-0 w-96 h-96 bg-primary-foreground/10 rounded-full blur-3xl";
-  background.appendChild(detail);
+  bgWrap.appendChild(detail);
 
   const detail2 = document.createElement("div");
   detail2.className =
     "absolute bottom-20 left-0 w-72 h-72 bg-primary-foreground/5 rounded-full blur-2xl";
-  background.appendChild(detail2);
+  bgWrap.appendChild(detail2);
 
   const container = document.createElement("div");
   container.className = "container mx-auto px-4 pt-24 pb-16 relative z-10";
@@ -33,7 +36,8 @@ export function inicio() {
   container.appendChild(grade);
 
   const gradeLeft = document.createElement("div");
-  gradeLeft.className = "text-primary-foreground space-y-8 animate-fade-in-up";
+  gradeLeft.className =
+    "text-primary-foreground w-full min-w-0 space-y-8 animate-fade-in-up break-all";
   grade.appendChild(gradeLeft);
 
   const floatWindow = document.createElement("div");
@@ -259,10 +263,11 @@ export function inicio() {
 
   const linha = document.createElement("div");
   linha.className =
-    "flex items-center gap-8 pt-8 border-t border-primary-foreground/20";
+    "flex items-center gap-4 pt-8 border-t border-primary-foreground/20";
   gradeLeft.appendChild(linha);
 
   const bottomInfo = document.createElement("div");
+  bottomInfo.className = "min-w-0";
   linha.appendChild(bottomInfo);
 
   const bottomInfoTitle = document.createElement("div");
@@ -276,6 +281,7 @@ export function inicio() {
   bottomInfo.appendChild(bottomInfoSubTitle);
 
   const bottomInfo2 = document.createElement("div");
+  bottomInfo2.className = "min-w-0";
   linha.appendChild(bottomInfo2);
 
   const bottomInfoTitle2 = document.createElement("div");
@@ -289,6 +295,7 @@ export function inicio() {
   bottomInfo2.appendChild(bottomInfoSubTitle2);
 
   const bottomInfo3 = document.createElement("div");
+  bottomInfo3.className = "min-w-0";
   linha.appendChild(bottomInfo3);
 
   const bottomInfoTitle3 = document.createElement("div");
@@ -747,18 +754,19 @@ export function solucoes() {
   container.appendChild(grade);
 
   const leftGrid = document.createElement("div");
-  leftGrid.className = "relative order-2 lg:order-1";
+  leftGrid.className = "relative w-8\/10 order-2 lg:order-1 min-w-0";
   grade.appendChild(leftGrid);
 
   const leftGridShadow = document.createElement("div");
   leftGridShadow.classList =
-    "relative rounded-3xl overflow-hidden shadow-strong";
+    "relative rounded-3xl overflow-hidden shadow-strong max-w-full";
   leftGrid.appendChild(leftGridShadow);
 
   const image = document.createElement("img");
   image.src = "./img/beneficios.png";
   image.alt = "Soluções ShopeBank";
-  image.className = "w-full h-auto object-cover";
+  image.className =
+    "w-full max-w-[320px] sm:max-w-[380px] md:max-w-[460px] lg:max-w-[520px] h-auto object-contain";
   leftGridShadow.appendChild(image);
 
   const bottomInfo = document.createElement("div");

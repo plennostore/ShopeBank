@@ -52,7 +52,7 @@
   --tw-contain-size: ;
   --tw-contain-layout: ;
   --tw-contain-paint: ;
-  --tw-contain-style:                                 
+  --tw-contain-style:                                             
 ;
 }
 
@@ -107,7 +107,7 @@
   --tw-contain-size: ;
   --tw-contain-layout: ;
   --tw-contain-paint: ;
-  --tw-contain-style:                                 
+  --tw-contain-style:                                             
 ;
 }
 
@@ -628,6 +628,10 @@ h6 {
   bottom: -1rem;
 }
 
+.-bottom {
+  bottom: -0rem;
+}
+
 .-bottom-6 {
   bottom: -1.5rem;
 }
@@ -646,6 +650,14 @@ h6 {
 
 .-right-6 {
   right: -1.5rem;
+}
+
+.-right-3 {
+  right: -0.75rem;
+}
+
+.-right {
+  right: -0rem;
 }
 
 .-top-12 {
@@ -1098,6 +1110,10 @@ h6 {
 
 .w-3\/4 {
   width: 75%;
+}
+
+.w-8\/10 {
+  width: 94%;
 }
 
 .w-4 {
