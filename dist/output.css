@@ -52,7 +52,7 @@
   --tw-contain-size: ;
   --tw-contain-layout: ;
   --tw-contain-paint: ;
-  --tw-contain-style:                              
+  --tw-contain-style:                                 
 ;
 }
 
@@ -107,7 +107,7 @@
   --tw-contain-size: ;
   --tw-contain-layout: ;
   --tw-contain-paint: ;
-  --tw-contain-style:                              
+  --tw-contain-style:                                 
 ;
 }
 
@@ -136,6 +136,14 @@ html,
   font-feature-settings: normal;
   font-variation-settings: normal;
   -webkit-tap-highlight-color: transparent;
+}
+
+html,
+body {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
 }
 
 body {
